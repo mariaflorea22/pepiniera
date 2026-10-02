@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pepinieră & Magazin de Bonsai și Plante Exotice - Mockup</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Pepinieră & Magazin de Bonsai și Plante Exotice</h1>
+    <p>Gestiune stoc de bonsai și exemplare exotice de pepinieră.</p>
+    <p class="app-count">3 plante în catalog, dintre care 2 disponibile</p>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>Adaugă Plantă / Bonsai</h2>
+      <form class="item-form">
+        <label>
+          Specie și Vârstă
+          <input type="text" name="titlu" placeholder="Ex: Ficus Retusa 12 ani" required />
+        </label>
+        <label>
+          Nivel Îngrijire
+          <select name="eticheta">
+            <option value="easy">Ușor (Începător)</option>
+            <option value="moderate">Mediu</option>
+            <option value="expert">Expert (Avansați)</option>
+          </select>
+        </label>
+        <button type="submit">Adaugă în Magazin</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Plantele Mele</h2>
+      <!-- Când lista e goală: <p class="empty">Nu există nicio plantă în stoc.</p> -->
+      <ul class="item-list">
+        <li class="item-card">
+          <div>
+            <h3>Ficus Retusa 12 ani</h3>
+            <span class="badge badge-easy">Ușor</span>
+          </div>
+          <span class="status">Disponibil</span>
+        </li>
+
+        <li class="item-card done">
+          <div>
+            <h3>Pinus Thunbergii (Pin Negru Japonez)</h3>
+            <span class="badge badge-expert">Expert</span>
+          </div>
+          <span class="status">Vândut</span>
+        </li>
+
+        <li class="item-card">
+          <div>
+            <h3>Acer Palmatum (Arțar Japonez)</h3>
+            <span class="badge badge-moderate">Mediu</span>
+          </div>
+          <span class="status">Disponibil</span>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="app-footer">Proiect Tehnologii Web</footer>
+</body>
+</html>

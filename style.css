@@ -1,0 +1,231 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Temă Cromatică Caldă / Pământie */
+  --bg-primary: #121614;     /* Gri-închis, spre negru pământiu */
+  --bg-card: #1c211f;        /* Gri-petrol închis */
+  --text-primary: #f0f7f4;   /* Alb cald */
+  --text-muted: #a3b1a8;     /* Gri-verzui pentru text secundar */
+  --accent-olive: #6b8e23;   /* Verde olivă subtil */
+  --accent-olive-dark: #556b2f; /* Verde olivă mai închis */
+  --accent-gold: #c5a059;    /* Auriu prafuit, inspirație asiatică */
+  
+  --border-light: #2d3833;
+  --shadow-subtle: 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-card: 0 10px 15px -3px rgba(0,0,0,0.5), 0 4px 6px -2px rgba(0,0,0,0.4);
+
+  /* Culori badge-uri nivel îngrijire - mai desaturate */
+  --badge-easy: #556b2f;      /* Măsliniu închis */
+  --badge-moderate: #96611d;  /* Bronz */
+  --badge-expert: #8b3a3a;    /* Grena / Roșu ars */
+  --done-color: #616e66;      /* Culoare neutră pentru elemente finalizate */
+}
+
+body {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Font cu personalitate */
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  padding-bottom: 40px;
+}
+
+/* Antet & Subsol */
+.app-header {
+  background: linear-gradient(135deg, #2a332f 0%, #1c211f 100%);
+  text-align: center;
+  padding: 48px 16px;
+  border-bottom: 2px solid var(--accent-gold);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+.app-header h1 {
+  margin: 0 0 12px 0;
+  font-size: 2.5rem;
+  color: var(--accent-gold);
+  letter-spacing: -1px;
+}
+
+.app-header p {
+  margin: 6px 0;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.app-header .app-count {
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 24px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-light);
+  margin-top: 48px;
+  font-size: 0.9rem;
+}
+
+/* Layout Grid (2 coloane pe desktop) */
+.container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 2.2fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Panouri (Carduri mari) */
+.panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+}
+
+.panel h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--accent-olive);
+  padding-bottom: 10px;
+  color: var(--accent-gold);
+}
+
+/* Formular */
+.item-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.item-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.item-form input,
+.item-form select,
+.item-form button {
+  padding: 12px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: inherit;
+}
+
+.item-form input, .item-form select {
+  border-color: var(--accent-olive);
+}
+
+.item-form button {
+  background: linear-gradient(135deg, var(--accent-olive) 0%, #4c661d 100%);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  transition: all 0.3s;
+}
+
+.item-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-subtle);
+}
+
+/* Lista & Carduri Individuale */
+.item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  background: var(--bg-card);
+  transition: all 0.3s;
+}
+
+.item-card:hover {
+  border-color: var(--accent-gold);
+}
+
+.item-card h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* Badge-uri de Nivel Îngrijire */
+.badge {
+  display: inline-block;
+  padding: 3px 12px;
+  font-size: 0.8rem;
+  border-radius: 16px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-easy { background: var(--badge-easy); }
+.badge-moderate { background: var(--badge-moderate); }
+.badge-expert { background: var(--badge-expert); }
+
+/* Status "Vândut" (.done) */
+.item-card.done h3 {
+  text-decoration: line-through;
+  color: var(--done-color);
+}
+
+.item-card.done {
+  opacity: 0.7;
+  border-color: transparent;
+}
+
+.item-card.done .status, 
+.item-card.done .badge {
+  color: var(--done-color);
+  background: transparent;
+  border: 1px solid var(--done-color);
+  box-shadow: none;
+}
+
+/* Navigare tastatură - Focus vizibil */
+:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 2px;
+}
+
+/* Responsive / Ecrane înguste (1 coloană) */
+@media (max-width: 800px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin: 20px auto;
+  }
+  
+  .app-header h1 {
+    font-size: 2rem;
+  }
+}
