@@ -1,5 +1,7 @@
+import TaskList from "./components/TaskList.jsx";
+
 const plante = [
-  { id: 1, titlu: "Ficus Retusa 12 ani", stare: "disponibil", tag: "uşor" },
+  { id: 1, titlu: "Ficus Retusa 12 ani", stare: "disponibil", tag: "usor" },
   { id: 2, titlu: "Pinus Thunbergii (Pin Negru Japonez)", stare: "vândut", tag: "expert" },
   { id: 3, titlu: "Acer Palmatum (Arțar Japonez)", stare: "disponibil", tag: "mediu" }
 ];
@@ -19,7 +21,7 @@ export default function App() {
       <main className="container">
         <section className="panel">
           <h2>Plantele Mele</h2>
-          <pre>{JSON.stringify(plante, null, 2)}</pre>
+          <TaskList taskuri={plante} />
         </section>
       </main>
     </>

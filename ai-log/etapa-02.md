@@ -1,17 +1,18 @@
 # Stage 2: AI log
 
-## Tools
-- Gemini / ChatGPT
+# Jurnal AI - Etapa 2
 
-## Conversations
-- Discussion about how to write immutable functions in JavaScript using the spread operator (`...`), `map`, and `filter` to manage plant catalog data.
-- Questions regarding how to properly calculate a unique ID using the `reduce` method to prevent duplicates after item deletion.
+- Gemini 
 
-## Key requests
-### 1. Immutable functions and validation
-- Asked for guidance on structuring add, toggle, and delete functions without mutating the original array.
-- The assistant suggested using `[...lista, nou]` for adding and array methods for state management. I adapted the code specifically for my plant shop theme, including title and care level validation.
+## Conversații
+- Discuție despre cum să se scrie funcții imutabile în JavaScript folosind operatorul spread (`...`), `map` și `filter` pentru a gestiona datele catalogului de plante.
+- Întrebări referitoare la modul de calcul corect al unui ID unic folosind metoda `reduce` pentru a preveni duplicatele după ștergerea unui element.
 
-## What I learned / what did not work
-- I understood why immutability is crucial for future integration with React in Stage 5.
-- I initially faced a path/security issue when opening the file locally in the browser, which I resolved by running a local development server using Live Server.
+## Cereri cheie
+### 1. Funcții imutabile și validare
+- Am cerut îndrumare privind structurarea funcțiilor de adăugare, comutare și ștergere fără a muta tabloul original.
+- Asistentul a sugerat utilizarea `[...lista, nou]` pentru adăugare și metode de tablou pentru gestionarea stării. Am adaptat codul în mod specific pentru tema mea de magazin de plante, incluzând validarea titlului și a nivelului de îngrijire.
+
+## Ce am învățat / ce nu a funcționat
+- Am înțeles de ce imutabilitatea este crucială pentru integrarea viitoare cu React în Etapa 5.
+- Am întâmpinat inițial o problemă de cale/securitate la deschiderea locală a fișierului în browser, pe care am rezolvat-o rulând un server de dezvoltare local folosind Live Server.

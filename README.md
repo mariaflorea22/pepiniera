@@ -16,3 +16,8 @@ The app now lives in `frontend/`, built with Vite. The data from stage 2 moved i
 cd frontend
 npm install
 npm run dev
+
+## Stage 4: components
+The list is rendered from the data, through two components:
+- `TaskList` receives the whole array and renders one card per item
+- `TaskCard` receives a single item through props and displays it
