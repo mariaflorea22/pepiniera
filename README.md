@@ -21,3 +21,12 @@ npm run dev
 The list is rendered from the data, through two components:
 - `TaskList` receives the whole array and renders one card per item
 - `TaskCard` receives a single item through props and displays it
+
+# Pepinieră & Magazin de Bonsai și Plante Exotice
+
+Aplicație web interactivă pentru gestionarea stocului de bonsai și exemplare exotice de pepinieră, dezvoltată în cadrul disciplinei Tehnologii Web.
+
+---
+
+## Stage 5: Local state and events
+The list lives in React state. Checking and deleting work from the page, and the counters in the header follow automatically. A button in the header switches between light and dark mode. Changes are lost on refresh, which is what stage 6 and stage 10 fix.
