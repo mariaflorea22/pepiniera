@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import TaskList from "./components/TaskList.jsx";
-import { fetchTasks } from "./api.js";
+import TaskForm from "./components/TaskForm.jsx";
+import { createTask, deleteTask, fetchTasks, updateTask } from "./api.js";
 
 function temaInitiala() {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -14,7 +15,6 @@ export default function App() {
 
   useEffect(() => {
     let ignore = false;
-
     async function load() {
       try {
         const data = await fetchTasks();
@@ -25,22 +25,34 @@ export default function App() {
         if (!ignore) setLoading(false);
       }
     }
-
     load();
-
     return () => {
       ignore = true;
     };
   }, []);
 
-  function handleToggle(id) {
-    setTaskuri((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, stare: t.stare === "disponibil" ? "vândut" : "disponibil" } : t))
-    );
+  async function handleAdd(task) {
+    const creat = await createTask(task);
+    setTaskuri((prev) => [...prev, creat]);
   }
 
-  function handleDelete(id) {
-    setTaskuri((prev) => prev.filter((t) => t.id !== id));
+  async function handleToggle(id) {
+    const task = taskuri.find((t) => t.id === id);
+    try {
+      const actualizat = await updateTask(id, { gata: !task.gata });
+      setTaskuri((prev) => prev.map((t) => (t.id === id ? actualizat : t)));
+    } catch (err) {
+      setError(err.message);
+    }
+  }
+
+  async function handleDelete(id) {
+    try {
+      await deleteTask(id);
+      setTaskuri((prev) => prev.filter((t) => t.id !== id));
+    } catch (err) {
+      setError(err.message);
+    }
   }
 
   function handleTema() {
@@ -49,7 +61,7 @@ export default function App() {
     document.documentElement.dataset.theme = noua;
   }
 
-  const active = taskuri.filter((t) => t.stare === "disponibil").length;
+  const active = taskuri.filter((t) => !t.gata).length;
 
   return (
     <>
@@ -69,17 +81,22 @@ export default function App() {
       </header>
       <main className="container">
         <section className="panel">
+          <h2>Adaugă plantă</h2>
+          <TaskForm onAdd={handleAdd} />
+        </section>
+        <section className="panel">
           <h2>Plantele Mele</h2>
-
-          {loading && <p className="info">Se încarcă...</p>}
-
-          {error && (
-            <p className="error">
-              Nu am putut încărca datele: {error}. Rulează <code>npm run api</code>?
+          {loading && (
+            <p className="info" data-testid="loading">
+              Se încarcă...
             </p>
           )}
-
-          {!loading && !error && (
+          {error && (
+            <p className="error" data-testid="error">
+              {error}
+            </p>
+          )}
+          {!loading && (
             <TaskList taskuri={taskuri} onToggle={handleToggle} onDelete={handleDelete} />
           )}
         </section>

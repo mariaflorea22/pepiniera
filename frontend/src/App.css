@@ -1,17 +1,17 @@
-- {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 :root {
-  /* Temă Cromatică Caldă / Pământie (Implicită / Light/Dark Bridge) */
-  --bg-primary: #121614;     
+  --bg-primary: #121614;    
   --bg-card: #1c211f;        
   --text-primary: #f0f7f4;   
-  --text-muted: #a3b1a8;     
+  --text-muted: #a3b1a8;    
   
-  /* Variabile conectate la data-theme pentru comutator */
   --bg: #121614;
   --card: #1c211f;
   --text: #f0f7f4;
@@ -26,14 +26,12 @@
   --shadow-subtle: 0 4px 6px rgba(0,0,0,0.3);
   --shadow-card: 0 10px 15px -3px rgba(0,0,0,0.5), 0 4px 6px -2px rgba(0,0,0,0.4);
 
-  /* Culori badge-uri nivel îngrijire */
   --badge-easy: #556b2f;     
   --badge-moderate: #96611d;  
   --badge-expert: #8b3a3a;    
   --done-color: #616e66;      
 }
 
-/* Suport explicit pentru teme prin data-theme pe <html> */
 :root[data-theme="dark"] {
   --bg: #14121d;
   --card: #1e1b2e;
@@ -112,13 +110,13 @@ body {
 }
 .theme-toggle:hover { background: rgba(255, 255, 255, 0.15); }
 
-/* Layout Grid */
+/* Layout Grid - Două coloane (Formular + Listă) */
 .container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 24px auto;
   padding: 0 16px;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 2fr;
   gap: 24px;
   align-items: start;
 }
@@ -173,7 +171,6 @@ body {
   color: var(--text);
 }
 
-/* Etapa 5: elemente interactive în card (checkbox și layout principal) */
 .task-main { 
   display: flex; 
   align-items: center; 
@@ -248,8 +245,85 @@ body {
   outline-offset: 2px;
 }
 
+/* Stări Loading / Error / Empty */
+.info { 
+  color: var(--muted); 
+}
+
+.error {
+  color: var(--badge-expert, #8b3a3a);
+  background: var(--error-bg, #fdf2f8);
+  border: 1px solid var(--error-border, #fbcfe8);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-top: 10px;
+}
+
+.empty {
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Formular Etapa 7 */
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.task-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.task-form input[type="text"],
+.task-form select {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  transition: border-color 0.2s;
+}
+
+.task-form input[type="text"]:focus,
+.task-form select:focus {
+  outline: none;
+  border-color: var(--accent-gold);
+}
+
+.task-form input[aria-invalid="true"] {
+  border-color: var(--badge-expert, #8b3a3a);
+}
+
+.task-form button[type="submit"] {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent-olive);
+  color: #fff;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.task-form button[type="submit"]:hover:not(:disabled) {
+  background: var(--accent-olive-dark);
+}
+
+.task-form button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 /* Responsive / Ecrane înguste */
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .container {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -259,13 +333,4 @@ body {
   .app-header h1 {
     font-size: 2rem;
   }
-
-.info { color: var(--muted); }
-.error {
-  color: var(--badge-expert, #8b3a3a);
-  background: var(--error-bg, #fdf2f8);
-  border: 1px solid var(--error-border, #fbcfe8);
-  border-radius: 8px;
-  padding: 10px 12px;
-}
 }

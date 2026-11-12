@@ -1,9 +1,9 @@
 {
   "tasks": [
-    { "id": 1, "titlu": "Ficus Retusa 12 ani", "stare": "disponibil", "tag": "usor" },
-    { "id": 2, "titlu": "Pinus Thunbergii (Pin Negru Japonez)", "stare": "vândut", "tag": "expert" },
-    { "id": 3, "titlu": "Acer Palmatum (Arțar Japonez)", "stare": "disponibil", "tag": "mediu" },
-    { "id": 4, "titlu": "Buxus Sempervirens (Ghiveci Decorativ)", "stare": "disponibil", "tag": "usor" },
-    { "id": 5, "titlu": "Juniperus Chinensis Shimpaku", "stare": "vândut", "tag": "expert" }
+    { "id": 1, "titlu": "Ficus Retusa 12 ani", "gata": false, "prioritate": "medie" },
+    { "id": 2, "titlu": "Pinus Thunbergii (Pin Negru Japonez)", "gata": true, "prioritate": "mare" },
+    { "id": 3, "titlu": "Acer Palmatum (Arțar Japonez)", "gata": false, "prioritate": "medie" },
+    { "id": 4, "titlu": "Buxus Sempervirens (Ghiveci Decorativ)", "gata": false, "prioritate": "mica" },
+    { "id": 5, "titlu": "Juniperus Chinensis Shimpaku", "gata": true, "prioritate": "mare" }
   ]
 }

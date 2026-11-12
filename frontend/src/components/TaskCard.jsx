@@ -1,18 +1,19 @@
-const ETICHETE_TAG = { usor: "uşor", mediu: "mediu", expert: "expert" };
+const ETICHETE_PRIORITATE = { mica: "mică", medie: "medie", mare: "mare" };
 
 export default function TaskCard({ task, onToggle, onDelete }) {
   return (
-    <div className={task.stare === "vândut" ? "task-card done" : "task-card"}>
+    <li className={task.gata ? "task-card done" : "task-card"} data-testid="item" data-id={task.id}>
       <label className="task-main">
         <input
           type="checkbox"
-          checked={task.stare === "vândut"}
+          checked={task.gata}
           onChange={() => onToggle(task.id)}
+          data-testid="item-toggle"
         />
-        <div className="task-info">
-          <h3>{task.titlu}</h3>
-          <span className={`badge badge-${task.tag}`}>
-            Nivel: {ETICHETE_TAG[task.tag]}
+        <div>
+          <h3 data-testid="item-title">{task.titlu}</h3>
+          <span className={`badge badge-${task.prioritate}`}>
+            Dificultate {ETICHETE_PRIORITATE[task.prioritate]}
           </span>
         </div>
       </label>
@@ -20,9 +21,10 @@ export default function TaskCard({ task, onToggle, onDelete }) {
         className="btn-danger"
         onClick={() => onDelete(task.id)}
         aria-label={`Șterge ${task.titlu}`}
+        data-testid="item-delete"
       >
         Șterge
       </button>
-    </div>
+    </li>
   );
 }
