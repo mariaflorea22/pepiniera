@@ -30,3 +30,15 @@ Aplicație web interactivă pentru gestionarea stocului de bonsai și exemplare 
 
 ## Stage 5: Local state and events
 The list lives in React state. Checking and deleting work from the page, and the counters in the header follow automatically. A button in the header switches between light and dark mode. Changes are lost on refresh, which is what stage 6 and stage 10 fix.
+
+## Stage 6: data from a mock API
+The list is served by json-server from `db.json`. The app fetches it on load and shows a loading state and an error state.
+
+### Rulare
+Pentru a rula aplicația, pornește serverul și clientul în **două terminale separate** (în folderul `frontend/`)
+```bash
+# Terminal 1: Pornire API Mock
+npm run api
+
+# Terminal 2: Pornire aplicație React
+npm run dev

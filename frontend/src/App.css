@@ -259,4 +259,13 @@ body {
   .app-header h1 {
     font-size: 2rem;
   }
+
+.info { color: var(--muted); }
+.error {
+  color: var(--badge-expert, #8b3a3a);
+  background: var(--error-bg, #fdf2f8);
+  border: 1px solid var(--error-border, #fbcfe8);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
 }

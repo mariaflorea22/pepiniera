@@ -1,19 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TaskList from "./components/TaskList.jsx";
-
-const TASKURI_INITIALE = [
-  { id: 1, titlu: "Ficus Retusa 12 ani", stare: "disponibil", tag: "usor" },
-  { id: 2, titlu: "Pinus Thunbergii (Pin Negru Japonez)", stare: "vândut", tag: "expert" },
-  { id: 3, titlu: "Acer Palmatum (Arțar Japonez)", stare: "disponibil", tag: "mediu" }
-];
+import { fetchTasks } from "./api.js";
 
 function temaInitiala() {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 export default function App() {
-  const [taskuri, setTaskuri] = useState(TASKURI_INITIALE);
+  const [taskuri, setTaskuri] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [tema, setTema] = useState(temaInitiala);
+
+  useEffect(() => {
+    let ignore = false;
+
+    async function load() {
+      try {
+        const data = await fetchTasks();
+        if (!ignore) setTaskuri(data);
+      } catch (err) {
+        if (!ignore) setError(err.message);
+      } finally {
+        if (!ignore) setLoading(false);
+      }
+    }
+
+    load();
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
 
   function handleToggle(id) {
     setTaskuri((prev) =>
@@ -52,7 +70,18 @@ export default function App() {
       <main className="container">
         <section className="panel">
           <h2>Plantele Mele</h2>
-          <TaskList taskuri={taskuri} onToggle={handleToggle} onDelete={handleDelete} />
+
+          {loading && <p className="info">Se încarcă...</p>}
+
+          {error && (
+            <p className="error">
+              Nu am putut încărca datele: {error}. Rulează <code>npm run api</code>?
+            </p>
+          )}
+
+          {!loading && !error && (
+            <TaskList taskuri={taskuri} onToggle={handleToggle} onDelete={handleDelete} />
+          )}
         </section>
       </main>
     </>
