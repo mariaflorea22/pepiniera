@@ -18,22 +18,18 @@ export function fetchTasks() {
   return request("/tasks");
 }
 
+export function fetchTask(id) {
+  return request(`/tasks/${id}`);
+}
+
 export function createTask(task) {
-  return request("/tasks", {
-    method: "POST",
-    body: JSON.stringify(task),
-  });
+  return request("/tasks", { method: "POST", body: JSON.stringify(task) });
 }
 
 export function updateTask(id, changes) {
-  return request(`/tasks/${id}`, {
-    method: "PATCH",
-    body: JSON.stringify(changes),
-  });
+  return request(`/tasks/${id}`, { method: "PATCH", body: JSON.stringify(changes) });
 }
 
 export function deleteTask(id) {
-  return request(`/tasks/${id}`, {
-    method: "DELETE",
-  });
+  return request(`/tasks/${id}`, { method: "DELETE" });
 }

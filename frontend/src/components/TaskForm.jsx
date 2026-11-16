@@ -1,10 +1,6 @@
 import { useState } from "react";
-
-const PRIORITATI = [
-  { value: "mica", label: "Mică" },
-  { value: "medie", label: "Medie" },
-  { value: "mare", label: "Mare" },
-];
+import { PRIORITATI } from "../constants.js";
+import styles from "./TaskForm.module.css";
 
 const TITLU_MAX = 100;
 
@@ -42,7 +38,7 @@ export default function TaskForm({ onAdd }) {
   }
 
   return (
-    <form className="task-form" onSubmit={handleSubmit} noValidate data-testid="form">
+    <form className={styles.form} onSubmit={handleSubmit} noValidate data-testid="form">
       <label>
         Titlu
         <input
@@ -74,7 +70,7 @@ export default function TaskForm({ onAdd }) {
           {eroare}
         </p>
       )}
-      <button type="submit" disabled={trimite} data-testid="form-submit">
+      <button type="submit" disabled={trimite} className="btn" data-testid="form-submit">
         {trimite ? "Se salvează..." : "Adaugă"}
       </button>
     </form>

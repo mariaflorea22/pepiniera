@@ -26,3 +26,15 @@ npm run api
 
 # Terminal 2: Pornire aplicație React
 npm run dev
+
+## Stage 8: routing and detail page
+The application is split into multiple pages using React Router: the main list view, a detail page for each item (`/tasks/:id`), an about page (`/despre`), and a 404 page for unknown routes[cite: 21, 22, 25]. Component styles have been migrated to CSS Modules, leaving only global variables and shared styles in `index.css`[cite: 21, 22, 24].
+
+### Rulare
+Pentru a rula aplicația, pornește serverul și clientul în **două terminale separate** (în folderul `frontend/`):
+```bash
+# Terminal 1: Pornire API Mock
+npm run api
+
+# Terminal 2: Pornire aplicație React
+npm run dev
